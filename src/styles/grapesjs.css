@@ -335,8 +335,6 @@ body.dragging-active .gjs-block {
   transform: scale(1.05);
 }
 
-/* All keyframe animations removed to prevent blinking */
-
 /* Additional canvas stability rules */
 .gjs-cv-canvas {
   position: relative;

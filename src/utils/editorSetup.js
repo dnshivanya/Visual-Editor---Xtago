@@ -100,7 +100,6 @@ export const setupEditorListeners = (editor, onLoad) => {
       });
     }
 
-    // Remove duplicate device buttons
     const deviceButtons = document.querySelectorAll('.panel__devices .gjs-pn-btn');
     if (deviceButtons.length > 3) {
       for (let i = 3; i < deviceButtons.length; i++) {

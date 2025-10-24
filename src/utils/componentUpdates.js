@@ -34,8 +34,7 @@ export const createUpdateMethods = (componentType) => {
         if (btn) {
           const link = this.get('buttonLink') || '#';
           btn.href = link;
-          
-          // Remove existing click listeners to avoid duplicates
+
           btn.removeEventListener('click', btn._navigationHandler);
           
           // Add click event handler for navigation
@@ -81,8 +80,7 @@ export const createUpdateMethods = (componentType) => {
         if (btn) {
           const link = this.get('primaryButtonLink') || '#';
           btn.href = link;
-          
-          // Remove existing click listeners to avoid duplicates
+
           btn.removeEventListener('click', btn._navigationHandler);
           
           // Add click event handler for navigation
@@ -102,7 +100,6 @@ export const createUpdateMethods = (componentType) => {
           const link = this.get('secondaryButtonLink') || '#';
           btn.href = link;
           
-          // Remove existing click listeners to avoid duplicates
           btn.removeEventListener('click', btn._navigationHandler);
           
           // Add click event handler for navigation
