@@ -1,0 +1,497 @@
+/* GrapesJS Editor Styles - Block manager, traits, and editor-specific components */
+
+/* Canvas scrolling and height fixes */
+.gjs-cv-canvas {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.gjs-cv-canvas iframe {
+  height: auto !important;
+  min-height: 100vh !important;
+}
+
+.gjs-frame {
+  height: auto !important;
+  min-height: 100vh !important;
+}
+
+/* Editor container scrolling */
+.gjs-editor {
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+.editor-canvas {
+  height: 100vh !important;
+  overflow: auto !important;
+}
+
+/* Ensure canvas body can expand */
+.gjs-cv-canvas .gjs-frame {
+  min-height: 100vh !important;
+  height: auto !important;
+}
+
+/* Block Manager Styles */
+.gjs-blocks-cs,
+.gjs-blocks-cs[data-category="Custom Components"],
+.gjs-blocks-cs[data-category="Basic"],
+.gjs-blocks-cs[data-category="Extra"] {
+  background: var(--background-primary) !important;
+}
+
+/* Ensure blocks are draggable */
+.gjs-block {
+  cursor: grab !important;
+  user-select: none !important;
+  transition: transform 0.2s ease !important;
+}
+
+.gjs-block:hover {
+  transform: scale(1.02) !important;
+}
+
+.gjs-block:active {
+  cursor: grabbing !important;
+}
+
+.gjs-blocks-cs .gjs-blocks-c {
+  background: transparent !important;
+}
+
+.gjs-blocks-cs .gjs-title {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  text-align: left;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+/* Custom Components Section */
+.gjs-blocks-cs[data-category="Custom Components"] {
+  background: var(--background-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.gjs-blocks-cs[data-category="Custom Components"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.gjs-blocks-cs[data-category="Custom Components"] .gjs-title {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: none;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: none;
+}
+
+.gjs-blocks-cs[data-category="Custom Components"] .gjs-title::before {
+  content: '🎨';
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+/* Component Blocks - Improved stability */
+.gjs-block {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin: 16px 0;
+  cursor: grab;
+  background: var(--background-primary);
+  transition: none !important;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-secondary);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-drag: element;
+  will-change: transform;
+}
+
+.gjs-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: none;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.gjs-block:hover {
+  background: var(--background-secondary);
+  border-color: var(--primary-color);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.12);
+  color: var(--text-primary);
+  transition: none !important;
+}
+
+.gjs-block:hover::before {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.gjs-block:active {
+  cursor: grabbing;
+  transition: none !important;
+  transform: scale(0.98);
+}
+
+.gjs-block.gjs-block-dragging {
+  opacity: 0.7;
+  cursor: grabbing;
+  transition: none !important;
+  animation: none !important;
+  will-change: transform !important;
+  z-index: 1000;
+}
+
+.gjs-block-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 15px;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Specific Block Types */
+.gjs-block[data-type="custom-card"] {
+  background: var(--background-primary);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.gjs-block[data-type="custom-card"]:hover {
+  background: var(--background-secondary);
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+.gjs-block[data-type="custom-card"] .gjs-block-label {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.gjs-block[data-type="hero-section"] {
+  background: var(--background-primary);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.gjs-block[data-type="hero-section"]:hover {
+  background: var(--background-secondary);
+  border-color: var(--secondary-color);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+}
+
+.gjs-block[data-type="hero-section"] .gjs-block-label {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.gjs-block[data-type="feature-grid"] {
+  background: var(--background-primary);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.gjs-block[data-type="feature-grid"]:hover {
+  background: var(--background-secondary);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.15);
+}
+
+.gjs-block[data-type="feature-grid"] .gjs-block-label {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.gjs-block[data-type="testimonial"] {
+  background: var(--background-primary);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.gjs-block[data-type="testimonial"]:hover {
+  background: var(--background-secondary);
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+.gjs-block[data-type="testimonial"] .gjs-block-label {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Traits Panel Styles */
+.gjs-trait {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: none;
+}
+
+.gjs-trait:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
+.gjs-trait-label {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.gjs-trait input,
+.gjs-trait textarea,
+.gjs-trait select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  transition: none;
+  background: var(--background-primary);
+}
+
+.gjs-trait input:focus,
+.gjs-trait textarea:focus,
+.gjs-trait select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.gjs-trait input:hover,
+.gjs-trait textarea:hover,
+.gjs-trait select:hover {
+  border-color: var(--text-muted);
+}
+
+/* Real-time update indicator - No animations */
+.gjs-trait.updating {
+  border-color: var(--secondary-color);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.gjs-trait.updating::after {
+  content: '✓';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+/* Drag and drop visual feedback */
+body.dragging-active .gjs-cv-canvas {
+  background: rgba(59, 130, 246, 0.05) !important;
+  border: 2px dashed var(--primary-color) !important;
+}
+
+body.dragging-active .gjs-block {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* All keyframe animations removed to prevent blinking */
+
+/* Additional canvas stability rules */
+.gjs-cv-canvas {
+  position: relative;
+  min-height: 400px;
+}
+
+/* Canvas stability improvements */
+.gjs-cv-canvas {
+  will-change: auto;
+}
+
+/* Drop zone indicators */
+.gjs-cv-canvas .gjs-placeholder {
+  background: rgba(59, 130, 246, 0.1) !important;
+  border: 2px dashed var(--primary-color) !important;
+  border-radius: var(--radius-md) !important;
+  min-height: 50px !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+.gjs-cv-canvas .gjs-dashed {
+  border: 2px dashed var(--primary-color) !important;
+  background: rgba(59, 130, 246, 0.05) !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+
+
+
+/* GrapesJS specific elements - Allow drag operations */
+.gjs-frame,
+.gjs-frame *,
+.gjs-highlighter,
+.gjs-highlighter *,
+.gjs-badge,
+.gjs-badge *,
+.gjs-resizer,
+.gjs-resizer *,
+.gjs-toolbar,
+.gjs-toolbar * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Prevent conflicts during component updates */
+.custom-card.updating,
+.hero-section.updating,
+.feature-grid.updating,
+.testimonial.updating {
+  pointer-events: none;
+}
+
+/* Device-specific canvas styles */
+.gjs-cv-canvas[data-device="Tablet"] .custom-card {
+  max-width: 350px;
+  padding: 28px;
+}
+
+.gjs-cv-canvas[data-device="Mobile"] .custom-card {
+  max-width: 100%;
+  padding: 20px;
+  margin: 12px auto;
+  border-radius: var(--radius-xl);
+}
+
+.gjs-cv-canvas[data-device="Mobile"] .custom-card img {
+  height: 150px;
+}
+
+.gjs-cv-canvas[data-device="Mobile"] .custom-card h3 {
+  font-size: 1.3em;
+}
+
+.gjs-cv-canvas[data-device="Mobile"] .custom-card p {
+  font-size: 14px;
+}
+
+/* Hide duplicate buttons */
+.btn-toggle-borders,
+.btn-show-json {
+  display: none !important;
+}
+
+.panel__basic-actions .gjs-pn-btn {
+  display: none !important;
+}
+
+.panel__basic-actions .btn-open-export {
+  display: flex !important;
+}
+
+/* Panel devices styling */
+.panel__devices {
+  display: flex !important;
+  gap: 6px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Hide duplicate device buttons */
+.panel__devices .gjs-pn-btn:nth-child(n+4) {
+  display: none !important;
+}
+
+.panel__devices .gjs-pn-btn:nth-child(4),
+.panel__devices .gjs-pn-btn:nth-child(5),
+.panel__devices .gjs-pn-btn:nth-child(6),
+.panel__devices .gjs-pn-btn:nth-child(7),
+.panel__devices .gjs-pn-btn:nth-child(8) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.panel__devices {
+  display: flex !important;
+  gap: 6px !important;
+  justify-content: center !important;
+  max-width: 160px !important;
+}
+
+.panel__devices .gjs-pn-btn:not(:nth-child(-n+3)) {
+  display: none !important;
+}
+
+.gjs-pn-btn:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.gjs-pn-btn.gjs-pn-active {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  font-weight: 600 !important;
+}
+
+.gjs-pn-btn * {
+  color: inherit !important;
+}
+
+/* Device Button Icons */
+#device-desktop i,
+#device-tablet i,
+#device-mobile i {
+  font-size: 14px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}

@@ -1,0 +1,41 @@
+/* Minimal GrapesJS styles for testing */
+.gjs-editor {
+  height: 100vh !important;
+}
+
+.gjs-cv-canvas {
+  height: 100% !important;
+}
+
+/* Ensure blocks are draggable */
+.gjs-block {
+  cursor: grab !important;
+  user-select: none !important;
+}
+
+.gjs-block:hover {
+  opacity: 0.8 !important;
+}
+
+.gjs-block:active {
+  cursor: grabbing !important;
+}
+
+/* Basic block styling */
+.gjs-blocks-cs {
+  padding: 10px !important;
+}
+
+.gjs-blocks-cs .gjs-title {
+  font-weight: bold !important;
+  margin-bottom: 10px !important;
+}
+
+.gjs-block {
+  margin: 5px !important;
+  padding: 10px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  background: white !important;
+  display: inline-block !important;
+}

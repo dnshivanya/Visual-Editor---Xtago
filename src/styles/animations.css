@@ -1,0 +1,37 @@
+/* Animations and Transitions - All animations removed for cleaner experience */
+
+/* Focus styles - static only */
+.gjs-block:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.3);
+  outline-offset: 2px;
+}
+
+.gjs-block:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Accessibility - All animations disabled */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Touch Device Optimizations - No animations */
+@media (hover: none) and (pointer: coarse) {
+  .gjs-block:hover,
+  .custom-card:hover,
+  .btn-open-export:hover,
+  .custom-device-btn:hover {
+    transform: none;
+  }
+  
+  .gjs-block:active,
+  .custom-card:active,
+  .btn-open-export:active,
+  .custom-device-btn:active {
+    transform: none;
+  }
+}
